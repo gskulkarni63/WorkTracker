@@ -1,18 +1,30 @@
 package com.example.worktracker.dto;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
-import javax.validation.constraints.FutureOrPresent;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import jakarta.persistence.Id;
+import jakarta.validation.constraints.FutureOrPresent;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class WorkDto {
+	@NotNull
     @NotBlank(message = "Employee ID is required")
     @Size(max = 255, message = "Employee ID must be less than 255 characters")
     private String empId;
 
+	@Id
+	@NotNull
     @NotBlank(message = "JIRA ID is required")
     @Size(max = 255, message = "JIRA ID must be less than 255 characters")
     private String jiraId;
@@ -30,9 +42,9 @@ public class WorkDto {
 
     @NotNull(message = "Start date field cannot be null")
     @FutureOrPresent(message = "Start date must be in the present or future")
-    private LocalDateTime startDate;
+    private LocalDate startDate;
 
     @NotNull(message = "End date field cannot be null")
     @FutureOrPresent(message = "End date must be in the present or future")
-    private LocalDateTime endDate;
+    private LocalDate endDate;
 }
