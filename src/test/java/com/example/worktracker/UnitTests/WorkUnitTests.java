@@ -137,4 +137,10 @@ public class WorkUnitTests {
 			service.getAllWork();
 		});
 	}
+	
+	void testUpdateWork() {
+		Mockito.when(repo.existsByJiraId(Mockito.any(String.class))).thenReturn(true);
+		Mockito.when(repo.getByJiraId(Mockito.any(String.class))).thenReturn(w);
+		
+	}
 }

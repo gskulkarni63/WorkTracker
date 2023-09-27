@@ -2,6 +2,7 @@ package com.example.worktracker.entity;
 
 import java.time.LocalDate;
 
+import com.example.worktracker.validation.StartAndEndDateConstraint;
 
 //import javax.validation.constraints.FutureOrPresent;
 //import javax.validation.constraints.Min;
@@ -31,6 +32,7 @@ import lombok.Setter;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@StartAndEndDateConstraint
 public class Work {
 
     @NotBlank(message = "Employee ID is required")
@@ -54,10 +56,10 @@ public class Work {
     @Min(value = 0, message = "Units must be greater than or equal to 0")
     private Integer units;
 
-    @NotNull(message = "Start date field cannot be null")
+//    @NotNull(message = "Start date field cannot be null")
     private LocalDate startDate;
 
-    @NotNull(message = "End date field cannot be null")
-    @FutureOrPresent(message = "End date must be in the present or future")
+//    @NotNull(message = "End date field cannot be null")
+//    @FutureOrPresent(message = "End date must be in the present or future")
     private LocalDate endDate;
 }

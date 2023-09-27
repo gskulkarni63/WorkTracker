@@ -2,6 +2,8 @@ package com.example.worktracker.dto;
 
 import java.time.LocalDate;
 
+import com.example.worktracker.validation.StartAndEndDateConstraint;
+
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.Min;
@@ -17,6 +19,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@StartAndEndDateConstraint
 public class WorkDto {
 	@NotNull
     @NotBlank(message = "Employee ID is required")
@@ -40,11 +43,11 @@ public class WorkDto {
     @Min(value = 0, message = "Units must be greater than or equal to 0")
     private Integer units;
 
-    @NotNull(message = "Start date field cannot be null")
-    @FutureOrPresent(message = "Start date must be in the present or future")
+//    @NotNull(message = "Start date field cannot be null")
+//    @FutureOrPresent(message = "Start date must be in the present or future")
     private LocalDate startDate;
 
-    @NotNull(message = "End date field cannot be null")
-    @FutureOrPresent(message = "End date must be in the present or future")
+//    @NotNull(message = "End date field cannot be null")
+//    @FutureOrPresent(message = "End date must be in the present or future")
     private LocalDate endDate;
 }
